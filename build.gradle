@@ -1,0 +1,8 @@
+task helloWorld << {
+	println "Hello World!"//这里的“<<”表示向helloWorld中加入执行代码——其实就是groovy代码。
+}
+
+task copyFile(type: Copy) {
+	from 'build.gradle'
+	into 'temp'
+}
