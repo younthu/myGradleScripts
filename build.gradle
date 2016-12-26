@@ -6,3 +6,11 @@ task copyFile(type: Copy) {
 	from 'build.gradle'
 	into 'temp'
 }
+
+task replaceString(dependsOn:'copyFile'){
+	doLast{
+		ant.replaceregexp(match:"Hello World!", replace:"Hello World2!", flags:'g', byline:false) {
+  			fileset(dir: './temp', includes: 'build.gradle')
+ 		}	
+	}
+}
